@@ -1,10 +1,10 @@
-#!/usr/bin/python3
-
 from flask import Flask
-from flask_mysqldb import MySQL
+from flask_sqlalchemy import SQLAlchemy
 from config import Config
+from app import routes, models
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
-mysql = MySQL(app)
+db = SQLAlchemy(app)

@@ -1,7 +1,6 @@
-#!/usr/bin/python3
-
 from flask import render_template, request, redirect, url_for, flash
-from app import app, mysql
+from app import app, db
+from app.models import User
 
 
 @app.route('/')
@@ -15,11 +14,9 @@ def add_user():
         name = request.form['name']
         email = request.form['email']
 
-        cur = mysql.connection.cursor()
-        cur.execute
-        ("INSERT INTO users(name, email) VALUES(%s, %s)", (name, email))
-        mysql.connection.commit()
-        cur.close()
+        user = User(username=name, email=email)
+        db.session.add(user)
+        db.session.commit()
 
         flash('User Added successfully')
         return redirect(url_for('index'))
