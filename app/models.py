@@ -21,8 +21,7 @@ class HealthPlan(db.Model):
     start_date = db.Column(db.Date)
     end_date = db.Column(db.Date)
 
-    user = db.relationship
-    ('User', backref=db.backref('health_plans', lazy=True))
+    user = db.relationship('User', backref=db.backref('health_plans', lazy=True))
 
     def __repr__(self):
         return f"HealthPlan('{self.user_id}', '{self.plan_name}')"
@@ -35,8 +34,7 @@ class Medication(db.Model):
     dosage = db.Column(db.String(50))
     frequency = db.Column(db.String(50))
 
-    user = db.relationship
-    ('User', backref=db.backref('medications', lazy=True))
+    user = db.relationship('User', backref=db.backref('medications', lazy=True))
 
     def __repr__(self):
         return f"Medication('{self.user_id}', '{self.medication_name}')"

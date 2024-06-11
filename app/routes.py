@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for, flash
 from app import app, db
 from app.models import User
+from flask import current_app as app
 
 
 @app.route('/')
